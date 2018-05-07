@@ -1,0 +1,20 @@
+PODS:
+  - Sodium (0.6)
+  - SwiftCheck (0.10.0)
+
+DEPENDENCIES:
+  - Sodium (~> 0.6)
+  - SwiftCheck (~> 0.10)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Sodium
+    - SwiftCheck
+
+SPEC CHECKSUMS:
+  Sodium: bf524b0a3d5ad6870dcf343205cca7e659c15ad5
+  SwiftCheck: 8a3c3638941467bc142d625f374a8409dd262ae8
+
+PODFILE CHECKSUM: 988ead922a865fbdad39945a2728f89ecfa3b9cf
+
+COCOAPODS: 1.5.0
