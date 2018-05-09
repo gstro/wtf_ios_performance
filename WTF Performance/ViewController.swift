@@ -44,7 +44,7 @@ class ViewController: UIViewController {
             else { return print("Failed to encrypt") }
 
         encrypted = Crypto.encrypt(textView.text, key: key)
-        textView.text = encrypted?.cipherText
+        textView.text = "Encrypted!"
     }
 
     private func decrypt() {

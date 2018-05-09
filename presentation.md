@@ -5,6 +5,10 @@ build-lists: true
 
 # [fit] WTF
 
+^Thanks everyone for coming
+
+^Thank you to Ryan and Dexcom
+
 ---
 
 # [fit] WTF
@@ -19,7 +23,7 @@ build-lists: true
 
 Software Engineer @ **Tozny**
   - Cryptography and Privacy Company
-  - _Often_ developing for iOS
+  - I'm _often_ developing for iOS
 
 ^Data Privacy and protection using applied Cryptography
 
@@ -29,6 +33,7 @@ Software Engineer @ **Tozny**
 
 PDX CocoaHeads Member Since **January 2014**
 
+^May have been coming to meetings prior to 2014, just start of Meetup membership
 ^I remember discussing the introduction of ARC
 
 [.build-lists: false]
@@ -72,7 +77,9 @@ Exhaustive List of Possible Performance Issues
 
 A Magic Bullet
 
-^Performance is a BIG issue
+^Performance is a WIDE-RANGING issue
+
+^So what IS this talk about?
 
 [.build-lists: false]
 
@@ -91,22 +98,6 @@ A Magic Bullet
 ^So your goal for any responsiveness scenario should be 100 milliseconds.
 
 ^Consider the oldest hardware you intend to support.
-
-^NEXT SLIDE: What is the root of all evil?
-
----
-
-# [fit] 👺
-# Premature Optimization
-
----
-
-# [fit] 👺
-# Premature Optimization
-- Don't guess, profile!
-- Be systematic!
-
-^ One change at a time -- process of elimination
 
 ---
 
@@ -129,7 +120,6 @@ Consider a copy of your `Release` Scheme with wrappers around UX[^1]:
 
 ---
 
-That said...
 # Various Performance Tips[^2]
 
 - Use a `reuseIdentifier` Where Appropriate
@@ -142,6 +132,22 @@ That said...
 ^Maybe one of these could fix the issue in my example app?
 
 [^2]: [25 iOS App Performance Tips - raywenderlich.com](https://www.raywenderlich.com/31166/25-ios-app-performance-tips-tricks)
+
+---
+
+That said...
+
+# [fit] 👺 Beware
+# [fit] Premature Optimization
+
+---
+
+# [fit] 👺
+# Premature Optimization
+- Don't guess, profile!
+- Be systematic!
+
+^ One change at a time -- process of elimination
 
 ---
 
@@ -163,14 +169,45 @@ Encrypts :lock: and decrypts :key: user-supplied text.
 
 ---
 
+# [fit] WTF
+
+---
+
 # WTF Is So Slow In My App?
 
 1. Am I using a slow algorithm?
 2. Is this library implementation slow?
 3. Are the instance creations expensive?
-4. Is this a result of moving around the `String`?
-Is there a lot of copying since it is a Value type?
+4. Is this a result of moving around the `String` (i.e. Value type)?
 5. Something else?
+
+^crypto libraries: ciphers, modes, padding...
+
+^Too many guesses
+
+---
+
+# Time Profiler:tm:
+
+---
+
+# Time Profiler:tm:
+
+Can be in-app or in-tests
+
+Allows inspection and drill-down
+
+Heaviest stack trace on the right panel
+
+Hold down `option` and click disclosure triangle
+
+Click to go to calling code
+
+Can we see the problem?
+
+^What we don't want to do: just dive in and try things out. (At least not yet.)
+
+^How do we know if we've improved? Can we quantify that "experience?"
 
 ---
 
@@ -190,20 +227,6 @@ Is there a lot of copying since it is a Value type?
 - Baseline and STDDEV
   - Baselines are _per device_
   - Can commit baselines to project repo
-
----
-
-# Time Profiler:tm:
-
----
-
-# Time Profiler:tm:
-
-Can be in-app or in-tests
-
-Allows inspection and drill-down
-
-Can we see the problem?
 
 ---
 
