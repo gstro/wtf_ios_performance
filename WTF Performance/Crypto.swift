@@ -30,8 +30,8 @@ extension Crypto {
     }
 
     static func encrypt(_ msg: String, key: Key) -> EncryptedMessage? {
-        let messageData = Data(msg.utf8)
-        guard let (cipher, nonce): CipherNonce = sodium.secretBox.seal(message: messageData, secretKey: key),
+        guard let messageData  = msg.data(using: .utf8),
+              let (cipher, nonce): CipherNonce = sodium.secretBox.seal(message: messageData, secretKey: key),
               let encodedMsg   = base64UrlEncode(cipher),
               let encodedNonce = base64UrlEncode(nonce)
             else { return nil }
