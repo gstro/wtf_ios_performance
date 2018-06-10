@@ -212,9 +212,19 @@ Uses large file of most common passwords
 
 ^full demo, through `Data.init` fix
 
+---
+
+# Time Profiler:tm:
+
+Initial Findings:
+- Understanding String Representations in Swift
+- [Strings, characters, and performance in Swift — a deep dive](https://medium.com/@tonyallevato/strings-characters-and-performance-in-swift-a-deep-dive-b7b5bde58d53)
+
 ^identify base64url bottleneck
 
 ^let's do this the "right" way
+
+[.build-lists: false]
 
 ---
 
