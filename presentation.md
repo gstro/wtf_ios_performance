@@ -5,10 +5,6 @@ build-lists: true
 
 # [fit] WTF
 
-^Thanks everyone for coming
-
-^Thank you to Ryan and Dexcom
-
 ---
 
 # [fit] WTF
@@ -16,6 +12,10 @@ build-lists: true
 
 ## Greg Stromire
 ## PDX CocoaHeads - May 9, 2018
+
+^Thanks everyone for coming
+
+^Thank you to Ryan and Dexcom
 
 ---
 
@@ -25,15 +25,16 @@ Software Engineer @ **Tozny**
   - Cryptography and Privacy Company
   - I'm _often_ developing for iOS
 
-^Data Privacy and protection using applied Cryptography
+^Data Privacy and Protection using applied Cryptography
 
-^Products for passwordless authentication and end-to-end encrypted database
+^Products for password-less authentication and end-to-end encrypted database
 
 ^Mainly client SDKs, but more services work lately
 
 PDX CocoaHeads Member Since **January 2014**
 
 ^May have been coming to meetings prior to 2014, just start of Meetup membership
+
 ^I remember discussing the introduction of ARC
 
 [.build-lists: false]
@@ -54,8 +55,8 @@ PDX CocoaHeads Member Since **January 2014**
 1. What this talk is _not_ :x:
 2. Notes about "Performance" :pencil:
 3. Example Application :iphone:
-4. `XCTest`ing for Performance :white_check_mark:
-5. _Time Profiler:tm:_ :clock3:
+4. _Time Profiler:tm:_ :clock3:
+5. `XCTest`ing for Performance :white_check_mark:
 6. Address Issue and Confirm :100:
 7. `Check` for Regressions :sparkles:
 
@@ -163,6 +164,8 @@ Encrypts :lock: and decrypts :key: user-supplied text.
 - Simplified version of a real problem I encountered
 - Anyone heard of `libsodium`[^3]?
 
+^start app
+
 [.build-lists: false]
 
 [^3]: [libsodium](https://download.libsodium.org/doc/)
@@ -183,11 +186,19 @@ Encrypts :lock: and decrypts :key: user-supplied text.
 
 ^crypto libraries: ciphers, modes, padding...
 
-^Too many guesses
+^Too many
+
+^Collect data like a scientist
 
 ---
 
 # Time Profiler:tm:
+
+^full demo, through `Data.init` fix
+
+^identify base64url bottleneck
+
+^let's do this the "right" way
 
 ---
 
@@ -203,7 +214,7 @@ Hold down `option` and click disclosure triangle
 
 Click to go to calling code
 
-Can we see the problem?
+Did we identify any issues?
 
 ^What we don't want to do: just dive in and try things out. (At least not yet.)
 
@@ -217,8 +228,6 @@ Can we see the problem?
 
 ^Class and instance setup
 
-^Show Graphs?
-
 ---
 
 # `XCTest`ing for Performance
@@ -227,6 +236,8 @@ Can we see the problem?
 - Baseline and STDDEV
   - Baselines are _per device_
   - Can commit baselines to project repo
+
+^full demo through improved baselines
 
 ---
 
@@ -288,3 +299,6 @@ Can we see the problem?
 [.build-lists: false]
 
 ---
+
+# [fit] Thanks!
+# Questions?

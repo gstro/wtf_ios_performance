@@ -499,6 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Debug;
 		};
@@ -518,6 +519,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Release;
 		};
@@ -540,6 +542,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTF Performance.app/WTF Performance";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Debug;
 		};
@@ -562,6 +565,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTF Performance.app/WTF Performance";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Release;
 		};

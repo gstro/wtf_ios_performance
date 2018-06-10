@@ -25,7 +25,7 @@ class WTFCheckTests: XCTestCase {
         property("Base64url decoding for sodium should match manual") <- forAll { (encoded: Base64UrlEncodedString) in
             let sodiumDecoded = Crypto.base64UrlDecode(encoded.value)
             let manualDecoded = Data(base64URLEncoded: encoded.value)
-            print("string: \(encoded.value)\n  sodium: \(sodiumDecoded)\n  manual: \(manualDecoded)")
+            print("string: \(encoded.value)\n  sodium: \(sodiumDecoded!)\n  manual: \(manualDecoded!)")
             return sodiumDecoded != nil && manualDecoded != nil && sodiumDecoded! == manualDecoded!
         }
     }
@@ -38,7 +38,7 @@ class WTFCheckTests: XCTestCase {
     }
 
     func testCheckShrinking() {
-        property("String count should be less than 5") <- forAll { (randomString: String) in
+        property("String might fail?") <- forAll { (randomString: String) in
             print("Test string: \(randomString)\n")
             return randomString.isEmpty || functionThatFailsOnDigitsOrSymbols(randomString)
         }
@@ -75,18 +75,10 @@ struct Base64UrlEncodedString: Arbitrary {
 }
 
 
-
+// artificial function to simulate failure
 func functionThatFailsOnDigitsOrSymbols(_ str: String) -> Bool {
     return !CharacterSet
         .decimalDigits
         .union(.symbols)
         .contains(str.unicodeScalars.first!)
 }
-
-
-
-
-
-
-
-

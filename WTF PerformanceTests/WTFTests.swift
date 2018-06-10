@@ -10,60 +10,16 @@ import Sodium
 
 class WTFTests: XCTestCase {
 
-    static var msg1B: String!
-    static var msg10B: String!
-    static var msg100B: String!
-    static var msg1KB: String!
-    static var msg10KB: String!
-    static var msg100KB: String!
-    static var msg1MB: String!
-    static var msg10MB: String!
-    static var msg100MB: String!
-
-    static var enc1B: EncryptedMessage!
-    static var enc10B: EncryptedMessage!
-    static var enc100B: EncryptedMessage!
-    static var enc1KB: EncryptedMessage!
-    static var enc10KB: EncryptedMessage!
-    static var enc100KB: EncryptedMessage!
-    static var enc1MB: EncryptedMessage!
-    static var enc10MB: EncryptedMessage!
-    static var enc100MB: EncryptedMessage!
-
     static let sodium = Sodium()
     static let key    = Crypto.generateKey()!
 
-    static func randomData(_ bytes: Int) -> String {
+    private func randomData(_ bytes: Int) -> String {
         let data = WTFTests.sodium.randomBytes.buf(length: bytes)!
         return String(bytes: data.asciiMasked(), encoding: .utf8)!
     }
 
-    static func encrypt(_ msg: String) -> EncryptedMessage {
+    private func encrypt(_ msg: String) -> EncryptedMessage {
         return Crypto.encrypt(msg, key: WTFTests.key)!
-    }
-
-    override class func setUp() {
-        super.setUp()
-
-        msg1B    = randomData(1)
-        msg10B   = randomData(10)
-        msg100B  = randomData(100)
-        msg1KB   = randomData(1_000)
-        msg10KB  = randomData(10_000)
-        msg100KB = randomData(100_000)
-        msg1MB   = randomData(1_000_000)
-        msg10MB  = randomData(10_000_000)
-        msg100MB = randomData(100_000_000)
-
-        enc1B    = encrypt(msg1B)
-        enc10B   = encrypt(msg10B)
-        enc100B  = encrypt(msg100B)
-        enc1KB   = encrypt(msg1KB)
-        enc10KB  = encrypt(msg10KB)
-        enc100KB = encrypt(msg100KB)
-        enc1MB   = encrypt(msg1MB)
-        enc10MB  = encrypt(msg10MB)
-        enc100MB = encrypt(msg100MB)
     }
 
     func runEncryption(_ msg: String) {
@@ -94,7 +50,7 @@ class WTFTests: XCTestCase {
             // repeated setup code here
 
             self.startMeasuring()
-            // code to actually measure here
+            // code to actually measure between start and stop
 
             self.stopMeasuring()
 
@@ -107,82 +63,92 @@ class WTFTests: XCTestCase {
     // MARK: Encryption Tests
 
     func testEncrypt1B() {
-        measure { self.runEncryption(WTFTests.msg1B) }
+        let msg = randomData(1)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt10B() {
-        measure { self.runEncryption(WTFTests.msg10B) }
+        let msg = randomData(10)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt100B() {
-        measure { self.runEncryption(WTFTests.msg100B) }
+        let msg = randomData(100)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt1KB() {
-        measure { self.runEncryption(WTFTests.msg1KB) }
+        let msg = randomData(1_000)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt10KB() {
-        measure { self.runEncryption(WTFTests.msg10KB) }
+        let msg = randomData(10_000)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt100KB() {
-        measure { self.runEncryption(WTFTests.msg100KB) }
+        let msg = randomData(100_000)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt1MB() {
-        measure { self.runEncryption(WTFTests.msg1MB) }
+        let msg = randomData(1_000_000)
+        measure { self.runEncryption(msg) }
     }
 
     func testEncrypt10MB() {
-        measure { self.runEncryption(WTFTests.msg10MB) }
-    }
-
-    func testEncrypt100MB() {
-        measure { self.runEncryption(WTFTests.msg100MB) }
+        let msg = randomData(10_000_000)
+        measure { self.runEncryption(msg) }
     }
 
     // MARK: Decryption Tests
 
     func testDecrypt1B() {
-        measure { self.runDecryption(WTFTests.enc1B) }
+        let cipher = encrypt(randomData(1))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt10B() {
-        measure { self.runDecryption(WTFTests.enc10B) }
+        let cipher = encrypt(randomData(10))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt100B() {
-        measure { self.runDecryption(WTFTests.enc100B) }
+        let cipher = encrypt(randomData(100))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt1KB() {
-        measure { self.runDecryption(WTFTests.enc1KB) }
+        let cipher = encrypt(randomData(1_000))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt10KB() {
-        measure { self.runDecryption(WTFTests.enc10KB) }
+        let cipher = encrypt(randomData(10_000))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt100KB() {
-        measure { self.runDecryption(WTFTests.enc100KB) }
+        let cipher = encrypt(randomData(100_000))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt1MB() {
-        measure { self.runDecryption(WTFTests.enc1MB) }
+        let cipher = encrypt(randomData(1_000_000))
+        measure { self.runDecryption(cipher) }
     }
 
     func testDecrypt10MB() {
-        measure { self.runDecryption(WTFTests.enc10MB) }
-    }
-
-    func testDecrypt100MB() {
-        measure { self.runDecryption(WTFTests.enc100MB) }
+        let cipher = encrypt(randomData(10_000_000))
+        measure { self.runDecryption(cipher) }
     }
     
 }
 
 extension Data {
+    // quick way to ensure that data can
+    // be represented cleanly as a string
     func asciiMasked() -> Data {
         let maskedBytes = [UInt8](self).map { $0 & 127 }
         return Data(bytes: maskedBytes)

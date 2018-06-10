@@ -4,13 +4,13 @@
 //
 
 import UIKit
-import Sodium
 
 class ViewController: UIViewController {
     private enum CryptoOp: Int {
         case decrypt, encrypt
     }
 
+    // generate secret key on each launch
     private let secretKey = Crypto.generateKey()
 
     private var encrypted: EncryptedMessage?
