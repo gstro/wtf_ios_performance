@@ -33,27 +33,41 @@ class ViewController: UIViewController {
 
     @IBAction func loadText(_ sender: Any) {
         guard let filepath = Bundle.main.path(forResource: "passwords", ofType: "txt") else { return }
-        textView.text = try? String(contentsOfFile: filepath)
+        DispatchQueue.global().async {
+            let text = try? String(contentsOfFile: filepath)
+            DispatchQueue.main.async {
+                self.textView.text = text
+            }
+        }
     }
 
     // MARK: Crypto Operations
 
     private func encrypt() {
-        guard !textView.text.isEmpty,
-            let key = secretKey
+        guard let text = textView.text,
+              !text.isEmpty,
+              let key = secretKey
             else { return print("Failed to encrypt") }
 
-        encrypted = Crypto.encrypt(textView.text, key: key)
-        textView.text = "Encrypted!"
+        DispatchQueue.global().async {
+            self.encrypted = Crypto.encrypt(text, key: key)
+            DispatchQueue.main.async {
+                self.textView.text = "Encrypted!"
+            }
+        }
     }
 
     private func decrypt() {
         guard let encMsg = encrypted,
-            let key = secretKey
+              let key = secretKey
             else { return print("Failed to decrypt") }
 
-        decrypted = Crypto.decrypt(encMsg, key: key)
-        textView.text = decrypted?.plainText
+        DispatchQueue.global().async {
+            self.decrypted = Crypto.decrypt(encMsg, key: key)
+            DispatchQueue.main.async {
+                self.textView.text = self.decrypted?.plainText
+            }
+        }
     }
 
 }
