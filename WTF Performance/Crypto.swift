@@ -51,14 +51,16 @@ extension Crypto {
 
 }
 
+fileprivate let variant: Utils.Base64Variant = .URLSAFE
+
 extension Crypto {
 
     static func base64UrlEncode(_ data: Data) -> String? {
-        return data.base64URLEncodedString()
+        return sodium.utils.bin2base64(data, variant: variant)
     }
 
     static func base64UrlDecode(_ string: String) -> Data? {
-        return Data(base64URLEncoded: string)
+        return sodium.utils.base642bin(string, variant: variant)
     }
 
 }
