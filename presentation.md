@@ -160,6 +160,7 @@ That said...
 
 Secret message application.
 Encrypts :lock: and decrypts :key: user-supplied text.
+Uses large file of most common passwords
 
 - Simplified version of a real problem I encountered
 - Anyone heard of `libsodium`[^3]?
@@ -189,6 +190,21 @@ Encrypts :lock: and decrypts :key: user-supplied text.
 ^Too many
 
 ^Collect data like a scientist
+
+---
+
+# WTF Is So Slow In My App?
+
+- ~~Use a `reuseIdentifier` Where Appropriate~~
+- ~~Set Views as Opaque When Possible~~
+- **Don’t Block the Main Thread**
+- ~~Size Images to Image Views~~
+- ~~Use Sprite Sheets~~
+- ~~Avoid Date Formatters Where Possible~~
+
+^This was probably obvious
+
+[.build-lists: false]
 
 ---
 
