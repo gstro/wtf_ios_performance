@@ -51,7 +51,7 @@ extension Crypto {
 
 }
 
-fileprivate let variant: Utils.Base64Variant = .URLSAFE
+fileprivate let variant: Utils.Base64Variant = .URLSAFE_NO_PADDING
 
 extension Crypto {
 
