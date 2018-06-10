@@ -18,8 +18,8 @@ struct DecryptedMessage {
     let plainText: String
 }
 
-struct Crypto {
-    private static let sodium = Sodium()
+enum Crypto {
+    fileprivate static let sodium = Sodium()
 }
 
 extension Crypto {
@@ -30,23 +30,35 @@ extension Crypto {
     }
 
     static func encrypt(_ msg: String, key: Key) -> EncryptedMessage? {
-        let data = Data(msg.utf8)
-        guard let (cipher, nonce): CipherNonce = sodium.secretBox.seal(message: data, secretKey: key) else {
-            return nil
-        }
+        let messageData = Data(msg.utf8)
+        guard let (cipher, nonce): CipherNonce = sodium.secretBox.seal(message: messageData, secretKey: key),
+              let encodedMsg   = base64UrlEncode(cipher),
+              let encodedNonce = base64UrlEncode(nonce)
+            else { return nil }
 
-        let encodedMsg   = cipher.base64URLEncodedString()
-        let encodedNonce = nonce.base64URLEncodedString()
         return EncryptedMessage(cipherText: encodedMsg, encodedNonce: encodedNonce)
     }
 
     static func decrypt(_ encrypted: EncryptedMessage, key: Key) -> DecryptedMessage? {
-        guard let msgData   = Data(base64URLEncoded: encrypted.cipherText),
-              let nonceData = Data(base64URLEncoded: encrypted.encodedNonce),
+        guard let msgData   = base64UrlDecode(encrypted.cipherText),
+              let nonceData = base64UrlDecode(encrypted.encodedNonce),
               let rawMsg    = sodium.secretBox.open(authenticatedCipherText: msgData, secretKey: key, nonce: nonceData),
-              let plaintext = String.init(data: rawMsg, encoding: .utf8) else {
-                return nil
-        }
+              let plaintext = String(data: rawMsg, encoding: .utf8)
+            else { return nil }
+
         return DecryptedMessage(plainText: plaintext)
     }
+
+}
+
+extension Crypto {
+
+    static func base64UrlEncode(_ data: Data) -> String? {
+        return data.base64URLEncodedString()
+    }
+
+    static func base64UrlDecode(_ string: String) -> Data? {
+        return Data(base64URLEncoded: string)
+    }
+
 }

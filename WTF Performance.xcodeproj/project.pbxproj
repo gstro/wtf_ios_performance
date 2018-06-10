@@ -15,9 +15,10 @@
 		E68359A420950973000348AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68359A220950973000348AD /* Main.storyboard */; };
 		E68359A620950974000348AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E68359A520950974000348AD /* Assets.xcassets */; };
 		E68359A920950974000348AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68359A720950974000348AD /* LaunchScreen.storyboard */; };
-		E68359B420950974000348AD /* WTF_PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68359B320950974000348AD /* WTF_PerformanceTests.swift */; };
+		E68359B420950974000348AD /* WTFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68359B320950974000348AD /* WTFTests.swift */; };
 		E68359BF209522BB000348AD /* Data+Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68359BE209522BB000348AD /* Data+Base64URL.swift */; };
 		E68359C0209522BB000348AD /* Data+Base64URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68359BE209522BB000348AD /* Data+Base64URL.swift */; };
+		E68F2F1020A2C726003538EB /* WTFCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68F2F0F20A2C726003538EB /* WTFCheckTests.swift */; };
 		EF5EE1D34599D28B396E791D /* Pods_WTF_Performance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CEA77DDD2B9921168A94A2 /* Pods_WTF_Performance.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,9 +47,10 @@
 		E68359A820950974000348AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E68359AA20950974000348AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E68359AF20950974000348AD /* WTF PerformanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WTF PerformanceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E68359B320950974000348AD /* WTF_PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTF_PerformanceTests.swift; sourceTree = "<group>"; };
+		E68359B320950974000348AD /* WTFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFTests.swift; sourceTree = "<group>"; };
 		E68359B520950974000348AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E68359BE209522BB000348AD /* Data+Base64URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Base64URL.swift"; sourceTree = "<group>"; };
+		E68F2F0F20A2C726003538EB /* WTFCheckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WTFCheckTests.swift; sourceTree = "<group>"; };
 		F4D790D01F99CAC33FB7CE08 /* Pods-WTF Performance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WTF Performance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WTF Performance/Pods-WTF Performance.debug.xcconfig"; sourceTree = "<group>"; };
 		F5B4FA629CCB57AE37AFA577 /* Pods_WTF_PerformanceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WTF_PerformanceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,7 +134,8 @@
 		E68359B220950974000348AD /* WTF PerformanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				E68359B320950974000348AD /* WTF_PerformanceTests.swift */,
+				E68359B320950974000348AD /* WTFTests.swift */,
+				E68F2F0F20A2C726003538EB /* WTFCheckTests.swift */,
 				E68359B520950974000348AD /* Info.plist */,
 			);
 			path = "WTF PerformanceTests";
@@ -331,7 +334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68359C0209522BB000348AD /* Data+Base64URL.swift in Sources */,
-				E68359B420950974000348AD /* WTF_PerformanceTests.swift in Sources */,
+				E68359B420950974000348AD /* WTFTests.swift in Sources */,
+				E68F2F1020A2C726003538EB /* WTFCheckTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Debug;
 		};
@@ -514,6 +519,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Release;
 		};
@@ -536,6 +542,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTF Performance.app/WTF Performance";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Debug;
 		};
@@ -558,6 +565,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTF Performance.app/WTF Performance";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = YES;
 			};
 			name = Release;
 		};
